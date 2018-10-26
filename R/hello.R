@@ -109,25 +109,25 @@ create_Pitch <- function(grass_colour = "#F9F9F9", line_colour = "#8F8F8F", back
     ## initiate the plot, set some boundries to the plot
     p <- p +
       # add the base rectangle of the pitch
-      geom_rect(aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),size = 2, fill = NA, colour = line_colour) +
+      geom_rect(aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),size = 1.5, fill = NA, colour = line_colour) +
       # add the 18 yard box defensive
-      geom_rect(aes(xmin=xmin, xmax=boxEdgeDef, ymin=boxEdgeLeft, ymax=boxEdgeRight),size = 2, fill = grass_colour, colour = line_colour) +
+      geom_rect(aes(xmin=xmin, xmax=boxEdgeDef, ymin=boxEdgeLeft, ymax=boxEdgeRight),size = 1.5, fill = grass_colour, colour = line_colour) +
       # add the 18 yard box offensive
-      geom_rect(aes(xmin=boxEdgeOff, xmax=xmax, ymin=boxEdgeLeft, ymax=boxEdgeRight),size = 2, fill = grass_colour, colour = line_colour) +
+      geom_rect(aes(xmin=boxEdgeOff, xmax=xmax, ymin=boxEdgeLeft, ymax=boxEdgeRight),size = 1.5, fill = grass_colour, colour = line_colour) +
       # add halway line
-      geom_segment(aes(x = halfwayline, y = ymin, xend = halfwayline, yend = ymax),size = 2,colour = line_colour) +
+      geom_segment(aes(x = halfwayline, y = ymin, xend = halfwayline, yend = ymax),size = 1.5,colour = line_colour) +
       # add the six yard box Defensive
-      geom_rect(aes(xmin=xmin, xmax=sixYardDef, ymin=sixYardLeft, ymax=sixYardRight),size = 2, fill = grass_colour, colour = line_colour)  +
+      geom_rect(aes(xmin=xmin, xmax=sixYardDef, ymin=sixYardLeft, ymax=sixYardRight),size = 1.5, fill = grass_colour, colour = line_colour)  +
       # add the six yard box offensive
-      geom_rect(aes(xmin=sixYardOff, xmax=xmax, ymin=sixYardLeft, ymax=sixYardRight),size = 2, fill = grass_colour, colour = line_colour) +
+      geom_rect(aes(xmin=sixYardOff, xmax=xmax, ymin=sixYardLeft, ymax=sixYardRight),size = 1.5, fill = grass_colour, colour = line_colour) +
       # add centre circle
       geom_path(data=center_circle, aes(x=x,y=y),size = 2, colour = line_colour) +
       # add penalty spot left
-      geom_point(aes(x = penSpotDef , y = CentreSpot), colour = line_colour, size = 2) +
+      geom_point(aes(x = penSpotDef , y = CentreSpot), colour = line_colour, size = 1.5) +
       # add penalty spot right
-      geom_point(aes(x = penSpotOff , y = CentreSpot), colour = line_colour, size = 2) +
+      geom_point(aes(x = penSpotOff , y = CentreSpot), colour = line_colour, size = 1.5) +
       # add centre spot
-      geom_point(aes(x = halfwayline , y = CentreSpot), colour = line_colour, size = 2) }
+      geom_point(aes(x = halfwayline , y = CentreSpot), colour = line_colour, size = 1.5) }
 
   #### add goals depending on type
 
@@ -145,9 +145,9 @@ create_Pitch <- function(grass_colour = "#F9F9F9", line_colour = "#8F8F8F", back
   if(goaltype == "barcanumbers"){
     p <- p +
       # add the goal Defensive
-      geom_segment(aes(x = xmin - 0.75, y = goalPostLeft, xend = xmin - 0.75, yend = goalPostRight),size = 2,colour = line_colour, size = 0.75) +
+      geom_segment(aes(x = xmin - 0.75, y = goalPostLeft, xend = xmin - 0.75, yend = goalPostRight),size = 1.5,colour = line_colour, size = 0.75) +
       # add the goal offensive
-      geom_segment(aes(x = xmax + 0.75, y = goalPostLeft, xend = xmax + 0.75, yend = goalPostRight),size = 2,colour = line_colour, size = 0.75)
+      geom_segment(aes(x = xmax + 0.75, y = goalPostLeft, xend = xmax + 0.75, yend = goalPostRight),size = 1.5,colour = line_colour, size = 0.75)
 
   }else{}
 
@@ -189,12 +189,12 @@ create_Pitch <- function(grass_colour = "#F9F9F9", line_colour = "#8F8F8F", back
       annotate("path",
                x = 12 + 10 * cos(seq(-0.3*pi, 0.3*pi, length.out = 30)),
                y = 40 + 10 * sin(seq(-0.3*pi, 0.3*pi, length.out = 30)),
-               size = 2,
+               size = 1.5,
                col = line_colour) +
       annotate("path",
                x = (120-12) - 10 * cos(seq(-0.3*pi, 0.3*pi, length.out = 30)),
                y = 40 + 10 * sin(seq(-0.3*pi, 0.3*pi, length.out = 30)),
-               size=2,
+               size=1.5,
                col = line_colour)
   }else{}
 
