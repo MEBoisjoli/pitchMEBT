@@ -14,7 +14,7 @@
 #' @param line_size Numeric. Default = 1
 #' @return A plot of a pitch
 #' @export
-create_Pitch <- function(grass_colour = "#2D2D2D", line_colour = "#B7B7B7", background_colour = "#2D2D2D", goal_colour = "#FFFFFF", goaltype = "barcanumbers", middlethird = FALSE, BasicFeatures = FALSE, JdeP = FALSE, arcs = TRUE, padding = 1.5, line_size = 1){
+create_Pitch <- function(grass_colour = "#2D2D2D", line_colour = "#EFEFEF", background_colour = "#2D2D2D", goal_colour = "#FFFFFF", goaltype = "barcanumbers", middlethird = FALSE, BasicFeatures = FALSE, JdeP = FALSE, arcs = TRUE, padding = 1.5, line_size = 1){
 
   library(ggplot2)
   ## set theme for blank pitch
