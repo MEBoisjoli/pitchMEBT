@@ -10,11 +10,11 @@
 #' @param middlethird Boolean. Default FALSE
 #' @param BasicFeatures Boolean. Default FALSE
 #' @param JdeP Boolean. Default FALSE
-#' @param padding Numeric. Default = 1
+#' @param padding Numeric. Default = 1.5
 #' @param line_size Numeric. Default = 1
 #' @return A plot of a pitch
 #' @export
-create_Pitch <- function(grass_colour = "#2D2D2D", line_colour = "#B7B7B7", background_colour = "#2D2D2D", goal_colour = "#FFFFFF", goaltype = "barcanumbers", middlethird = FALSE, BasicFeatures = FALSE, JdeP = FALSE, arcs = TRUE, padding = 1, line_size = 1){
+create_Pitch <- function(grass_colour = "#2D2D2D", line_colour = "#B7B7B7", background_colour = "#2D2D2D", goal_colour = "#FFFFFF", goaltype = "barcanumbers", middlethird = FALSE, BasicFeatures = FALSE, JdeP = FALSE, arcs = TRUE, padding = 1.5, line_size = 1){
 
   library(ggplot2)
   ## set theme for blank pitch
@@ -146,9 +146,9 @@ create_Pitch <- function(grass_colour = "#2D2D2D", line_colour = "#B7B7B7", back
   if(goaltype == "barcanumbers"){
     p <- p +
       # add the goal Defensive
-      geom_segment(aes(x = xmin - 0.75, y = goalPostLeft, xend = xmin - 0.75, yend = goalPostRight),size = line_size,colour = line_colour, size = line_size) +
+      geom_segment(aes(x = xmin - 1, y = goalPostLeft, xend = xmin - 1, yend = goalPostRight),size = line_size,colour = line_colour, size = line_size) +
       # add the goal offensive
-      geom_segment(aes(x = xmax + 0.75, y = goalPostLeft, xend = xmax + 0.75, yend = goalPostRight),size = line_size,colour = line_colour, size = line_size)
+      geom_segment(aes(x = xmax + 1, y = goalPostLeft, xend = xmax + 1, yend = goalPostRight),size = line_size,colour = line_colour, size = line_size)
 
   }else{}
 
