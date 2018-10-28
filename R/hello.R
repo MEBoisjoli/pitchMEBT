@@ -13,7 +13,7 @@
 #' @param padding Numeric. Default = 5
 #' @return A plot of a pitch
 #' @export
-create_Pitch <- function(grass_colour = "#F9F9F9", line_colour = "#8F8F8F", background_colour = "#F9F9F9", goal_colour = "#000000", goaltype = "line", middlethird = FALSE, BasicFeatures = FALSE, JdeP = FALSE, arcs = TRUE, padding = 5){
+create_Pitch <- function(grass_colour = "#F9F9F9", line_colour = "#8F8F8F", background_colour = "#F9F9F9", goal_colour = "#000000", goaltype = "line", middlethird = FALSE, BasicFeatures = FALSE, JdeP = FALSE, arcs = TRUE, padding = 5, line_size = 1){
 
   library(ggplot2)
   ## set theme for blank pitch
@@ -109,25 +109,25 @@ create_Pitch <- function(grass_colour = "#F9F9F9", line_colour = "#8F8F8F", back
     ## initiate the plot, set some boundries to the plot
     p <- p +
       # add the base rectangle of the pitch
-      geom_rect(aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),size = 1.5, fill = NA, colour = line_colour) +
+      geom_rect(aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),size = line_size, fill = NA, colour = line_colour) +
       # add the 18 yard box defensive
-      geom_rect(aes(xmin=xmin, xmax=boxEdgeDef, ymin=boxEdgeLeft, ymax=boxEdgeRight),size = 1.5, fill = grass_colour, colour = line_colour) +
+      geom_rect(aes(xmin=xmin, xmax=boxEdgeDef, ymin=boxEdgeLeft, ymax=boxEdgeRight),size = line_size, fill = grass_colour, colour = line_colour) +
       # add the 18 yard box offensive
-      geom_rect(aes(xmin=boxEdgeOff, xmax=xmax, ymin=boxEdgeLeft, ymax=boxEdgeRight),size = 1.5, fill = grass_colour, colour = line_colour) +
+      geom_rect(aes(xmin=boxEdgeOff, xmax=xmax, ymin=boxEdgeLeft, ymax=boxEdgeRight),size = line_size, fill = grass_colour, colour = line_colour) +
       # add halway line
-      geom_segment(aes(x = halfwayline, y = ymin, xend = halfwayline, yend = ymax),size = 1.5,colour = line_colour) +
+      geom_segment(aes(x = halfwayline, y = ymin, xend = halfwayline, yend = ymax),size = line_size,colour = line_colour) +
       # add the six yard box Defensive
-      geom_rect(aes(xmin=xmin, xmax=sixYardDef, ymin=sixYardLeft, ymax=sixYardRight),size = 1.5, fill = grass_colour, colour = line_colour)  +
+      geom_rect(aes(xmin=xmin, xmax=sixYardDef, ymin=sixYardLeft, ymax=sixYardRight),size = line_size, fill = grass_colour, colour = line_colour)  +
       # add the six yard box offensive
-      geom_rect(aes(xmin=sixYardOff, xmax=xmax, ymin=sixYardLeft, ymax=sixYardRight),size = 1.5, fill = grass_colour, colour = line_colour) +
+      geom_rect(aes(xmin=sixYardOff, xmax=xmax, ymin=sixYardLeft, ymax=sixYardRight),size = line_size, fill = grass_colour, colour = line_colour) +
       # add centre circle
-      geom_path(data=center_circle, aes(x=x,y=y),size = 2, colour = line_colour) +
+      geom_path(data=center_circle, aes(x=x,y=y),size = line_size, colour = line_colour) +
       # add penalty spot left
-      geom_point(aes(x = penSpotDef , y = CentreSpot), colour = line_colour, size = 1.5) +
+      geom_point(aes(x = penSpotDef , y = CentreSpot), colour = line_colour, size = line_size) +
       # add penalty spot right
-      geom_point(aes(x = penSpotOff , y = CentreSpot), colour = line_colour, size = 1.5) +
+      geom_point(aes(x = penSpotOff , y = CentreSpot), colour = line_colour, size = line_size) +
       # add centre spot
-      geom_point(aes(x = halfwayline , y = CentreSpot), colour = line_colour, size = 1.5) }
+      geom_point(aes(x = halfwayline , y = CentreSpot), colour = line_colour, size = line_size) }
 
   #### add goals depending on type
 
@@ -135,9 +135,9 @@ create_Pitch <- function(grass_colour = "#F9F9F9", line_colour = "#8F8F8F", back
   if(goaltype == "line"){
     p <- p +
       # add the goal Defensive
-      geom_segment(aes(x = xmin, y = goalPostLeft, xend = xmin, yend = goalPostRight),size = 1,colour = goal_colour, size = 2) +
+      geom_segment(aes(x = xmin, y = goalPostLeft, xend = xmin, yend = goalPostRight),colour = goal_colour, size = line_size) +
       # add the goal offensive
-      geom_segment(aes(x = xmax, y = goalPostLeft, xend = xmax, yend = goalPostRight),size = 1,colour = goal_colour, size = 2)
+      geom_segment(aes(x = xmax, y = goalPostLeft, xend = xmax, yend = goalPostRight),colour = goal_colour, size = line_size)
 
   }else{}
 
@@ -145,9 +145,9 @@ create_Pitch <- function(grass_colour = "#F9F9F9", line_colour = "#8F8F8F", back
   if(goaltype == "barcanumbers"){
     p <- p +
       # add the goal Defensive
-      geom_segment(aes(x = xmin - 0.75, y = goalPostLeft, xend = xmin - 0.75, yend = goalPostRight),size = 1.5,colour = line_colour, size = 0.75) +
+      geom_segment(aes(x = xmin - 0.75, y = goalPostLeft, xend = xmin - 0.75, yend = goalPostRight),size = line_size,colour = line_colour, size = line_size) +
       # add the goal offensive
-      geom_segment(aes(x = xmax + 0.75, y = goalPostLeft, xend = xmax + 0.75, yend = goalPostRight),size = 1.5,colour = line_colour, size = 0.75)
+      geom_segment(aes(x = xmax + 0.75, y = goalPostLeft, xend = xmax + 0.75, yend = goalPostRight),size = line_size,colour = line_colour, size = line_size)
 
   }else{}
 
@@ -189,12 +189,12 @@ create_Pitch <- function(grass_colour = "#F9F9F9", line_colour = "#8F8F8F", back
       annotate("path",
                x = 12 + 10 * cos(seq(-0.3*pi, 0.3*pi, length.out = 30)),
                y = 40 + 10 * sin(seq(-0.3*pi, 0.3*pi, length.out = 30)),
-               size = 1.5,
+               size = line_size,
                col = line_colour) +
       annotate("path",
                x = (120-12) - 10 * cos(seq(-0.3*pi, 0.3*pi, length.out = 30)),
                y = 40 + 10 * sin(seq(-0.3*pi, 0.3*pi, length.out = 30)),
-               size=1.5,
+               size=line_size,
                col = line_colour)
   }else{}
 
